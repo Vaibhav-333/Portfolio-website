@@ -1,0 +1,170 @@
+.home-wrapper {
+  padding: 2rem;
+  font-family: 'Segoe UI', sans-serif;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.intro-text {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.type-animation {
+  display: block;
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
+  color: #beb3b3;
+}
+
+.resume-button {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.7rem 1.5rem;
+  background: #4b6cb7;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+}
+.resume-button:hover {
+  background: #182848;
+}
+
+.profile-image {
+  display: flex;
+  justify-content: center;
+}
+.profile-image img {
+  margin-top: 1.5rem;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+.profile-image img:hover {
+  transform: scale(1.3);
+}
+
+.about-section, .skills-section, .projects-section, .timeline-section, .contact-section {
+  margin-top: 3rem;
+}
+
+.education-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1.2rem;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.education-table th,
+.education-table td {
+  border: 1px solid #ccc;
+  padding: 0.75rem;
+}
+
+.education-table th {
+  background-color: #f0f0f0;
+  font-weight: bold;
+}
+
+
+.skills-grid {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.skills-grid .skill-icon {
+  width: 60px;
+  height: 60px;
+  transition: transform 0.3s ease;
+  position: relative;
+}
+
+.skills-grid .skill-icon:hover {
+  transform: scale(1.2);
+}
+
+.skills-grid .skill-icon::after {
+  content: attr(data-name);
+  position: absolute;
+  bottom: -1.8rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #4b6cb7;
+  color: #fff;
+  padding: 0.3rem 0.6rem;
+  border-radius: 5px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.skills-grid .skill-icon:hover::after {
+  opacity: 1;
+}
+
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 1rem 0;
+}
+
+.social-links img {
+  width: 40px;
+  height: 40px;
+  transition: transform 0.3s ease;
+}
+
+.social-links img:hover {
+  transform: scale(1.2);
+}
+
+
+.project-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.project {
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: #f9f9f9;
+}
+.project h3 {
+  color: #4b6cb7;
+}
+
+.contact-section form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 600px;
+  margin: auto;
+}
+.contact-section input, .contact-section textarea {
+  padding: 0.8rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+.contact-section button {
+  background: #4b6cb7;
+  color: white;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.contact-section button:hover {
+  background: #182848;
+}

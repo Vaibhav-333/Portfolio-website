@@ -1,0 +1,22 @@
+.timeline-section {
+  padding: 2rem;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.timeline-section h2 {
+  text-align: center;
+  color: var(--text-color);
+  margin-bottom: 2rem;
+}
+
+/* Override vertical timeline styling if needed */
+.vertical-timeline-element-content {
+  background: var(--navbar-bg) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.vertical-timeline-element-title {
+  font-weight: bold;
+}

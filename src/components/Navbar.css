@@ -1,0 +1,40 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: var(--navbar-bg);
+  color: var(--text-color);
+  flex-wrap: wrap;
+}
+
+.navbar-left .logo {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.navbar-right {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.navbar-right a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 800;
+}
+
+.navbar-right a:hover {
+  text-decoration: underline;
+}
+
+.theme-toggle {
+  padding: 0.5rem 1rem;
+  background-color: var(--btn-bg);
+  color: var(--btn-text);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}

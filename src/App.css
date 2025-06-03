@@ -1,0 +1,28 @@
+/* Global CSS - App.css or index.css */
+:root {
+  --navbar-bg: #bb6565;
+  --text-color: #333;
+  --btn-bg: #333;
+  --btn-text: #fff;
+  --bg-color: #ffffff;
+}
+
+body.light-theme {
+  --navbar-bg: #706767;
+  --text-color: #262525;
+  --btn-bg: #333;
+  --btn-text: #ebe0e0;
+  --bg-color: #eaf6f8;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+body.dark-theme {
+  --navbar-bg: #393939;
+  --text-color: #f1f1f1;
+  --btn-bg: #eee;
+  --btn-text: #000;
+  --bg-color: #111;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
