@@ -9,8 +9,8 @@ const Contact = () => {
   const sendEmail = (e) => {
     e.preventDefault();
 
-    emailjs.sendForm("your_service_id", "your_template_id", form.current, "your_public_key")
-      .then(() => alert("Message sent!"))
+    emailjs.sendForm("service_j3wn4or", "template_11vu05g", form.current, "U5Z0pqZRDguX6I1Pa")
+      .then(() => alert("Thanks for connecting with me.! I will get back to you soon."))
       .catch(() => alert("Error sending message."));
 
     e.target.reset();
