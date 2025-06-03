@@ -8,6 +8,10 @@ const certifications = [
     file: "/certificates/data-science-masters.pdf",
   },
   {
+    title: "AWS Cloud Computing – Amazon",
+    file: "/certificates/aws-cloud.pdf",
+  },
+  {
     title: "Excel for Finance – Coursera",
     file: "/certificates/excel-finance.pdf",
   },
@@ -17,14 +21,26 @@ const Certifications = () => {
   return (
     <div className="certifications-section">
       <h2>📜 My Certifications</h2>
-      <ul>
-        {certifications.map((cert, i) => (
-          <li key={i}>
-            <span>{cert.title}</span>
-            <a href={cert.file} download className="download-btn">Download</a>
-          </li>
-        ))}
-      </ul>
+      <table className="cert-table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Download</th>
+          </tr>
+        </thead>
+        <tbody>
+          {certifications.map((cert, index) => (
+            <tr key={index}>
+              <td>{cert.title}</td>
+              <td>
+                <a href={cert.file} download className="download-btn">
+                  Download
+                </a>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };
