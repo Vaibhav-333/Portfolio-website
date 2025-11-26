@@ -9,7 +9,6 @@ import Experience from "./components/Experience";
 import Certifications from "./components/Certifications";
 import "./App.css";
 
-
 function App() {
   const [theme, setTheme] = useState("light");
 

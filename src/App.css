@@ -1,28 +1,75 @@
-/* Global CSS - App.css or index.css */
+/* Global CSS - App.css */
 :root {
-  --navbar-bg: #bb6565;
-  --text-color: #333;
-  --btn-bg: #333;
-  --btn-text: #fff;
-  --bg-color: #ffffff;
+  /* Light Theme Colors */
+  --primary-color: #2563eb;
+  --primary-hover: #1d4ed8;
+  --secondary-color: #64748b;
+  --accent-color: #0ea5e9;
+  --success-color: #10b981;
+  --warning-color: #f59e0b;
 }
 
 body.light-theme {
-  --navbar-bg: #706767;
-  --text-color: #262525;
-  --btn-bg: #333;
-  --btn-text: #ebe0e0;
-  --bg-color: #eaf6f8;
+  --navbar-bg: #ffffff;
+  --navbar-text: #1e293b;
+  --navbar-border: #e2e8f0;
+  --text-color: #334155;
+  --text-secondary: #64748b;
+  --heading-color: #0f172a;
+  --btn-bg: #2563eb;
+  --btn-text: #ffffff;
+  --btn-hover: #1d4ed8;
+  --bg-color: #f8fafc;
+  --card-bg: #ffffff;
+  --border-color: #e2e8f0;
+  --shadow-color: rgba(15, 23, 42, 0.1);
   background-color: var(--bg-color);
   color: var(--text-color);
 }
 
 body.dark-theme {
-  --navbar-bg: #393939;
-  --text-color: #f1f1f1;
-  --btn-bg: #eee;
-  --btn-text: #000;
-  --bg-color: #111;
+  --navbar-bg: #0f172a;
+  --navbar-text: #f1f5f9;
+  --navbar-border: #334155;
+  --text-color: #cbd5e1;
+  --text-secondary: #94a3b8;
+  --heading-color: #f1f5f9;
+  --btn-bg: #3b82f6;
+  --btn-text: #ffffff;
+  --btn-hover: #2563eb;
+  --bg-color: #020617;
+  --card-bg: #1e293b;
+  --border-color: #334155;
+  --shadow-color: rgba(0, 0, 0, 0.3);
   background-color: var(--bg-color);
   color: var(--text-color);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', 'Segoe UI', 'Roboto', sans-serif;
+  line-height: 1.6;
+  transition: all 0.3s ease;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Remove any background content behind navbar */
+body::before {
+  content: none;
+}
+
+/* Ensure main content doesn't overlap with fixed navbar */
+main {
+  padding-top: 80px;
 }
