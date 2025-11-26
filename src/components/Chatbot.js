@@ -116,12 +116,11 @@ const Chatbot = ({ theme }) => {
     setIsTyping(true);
 
     try {
-      const response = await fetch("http://127.0.0.1:5000/chat", {
+      const response = await fetch("https://vaibhav-chatbot-backend.onrender.com/chat", {
         method: "POST",
         headers: { 
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*"
-        },
+          "Content-Type": "application/json"
+          },
         body: JSON.stringify({ message: userMessage }),
       });
 
