@@ -1124,3 +1124,121 @@
     content: ':';
   }
 }
+
+/* ============================================================
+   ADD THESE RULES TO YOUR Home.css
+   (Replace / merge into the existing @media (max-width: 768px)
+    and @media (max-width: 600px) blocks, or just paste at the
+    very bottom of Home.css — they will override the old rules)
+   ============================================================ */
+
+/* ── Mobile: hero section ── */
+@media (max-width: 600px) {
+  .hero-section {
+    /* Force content to start from the left edge, fully visible */
+    justify-content: center;
+    align-items: flex-start;
+    padding: 4rem 1.5rem 2rem;
+    min-height: 100svh;
+    /* use svh so address bar doesn't cause overflow */
+    text-align: left;
+    /* Make sure it sits above the fixed background image */
+    position: relative;
+    z-index: 2;
+  }
+
+  .intro-text {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .main-title {
+    font-size: clamp(1.8rem, 8vw, 2.4rem);
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .professional-subtitle {
+    font-size: 1rem;
+  }
+
+  .type-container {
+    height: auto;
+    min-height: 50px;
+    margin: 1.2rem 0;
+  }
+
+  .type-animation {
+    font-size: 1rem;
+  }
+
+  .cta-container {
+    margin-top: 1.5rem;
+    gap: 1rem;
+  }
+
+  .resume-buttons {
+    flex-direction: row;
+    /* keep side by side if space allows */
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .resume-button {
+    flex: 1 1 140px;
+    /* each button takes equal share */
+    min-width: 140px;
+    justify-content: center;
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .connect-button {
+    width: 100%;
+    justify-content: center;
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .connect-dropdown {
+    left: 0;
+    right: 0;
+    min-width: unset;
+    width: 100%;
+  }
+}
+
+/* ── Tablet (600px – 768px): also needs some help ── */
+@media (min-width: 601px) and (max-width: 768px) {
+  .hero-section {
+    justify-content: flex-start;
+    padding: 3rem 2rem 2rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  .intro-text {
+    max-width: 100%;
+  }
+}
+
+/* ── Glass cards: tighter margins on small screens ── */
+@media (max-width: 600px) {
+  .glass-card {
+    margin: 1.5rem 0.75rem;
+    padding: 1.5rem 1rem;
+  }
+
+  .resume-inline-section {
+    margin: 1.5rem 0.75rem;
+  }
+
+  .ri-header {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .ri-header-right {
+    align-items: flex-start;
+  }
+}
