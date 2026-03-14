@@ -9,14 +9,14 @@ const Experience = () => {
   const [currentExperience, setCurrentExperience] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [hoveredCard, setHoveredCard] = useState(null);
-  
+
   // Zoom states
   const [zoomLevel, setZoomLevel] = useState(1);
   const [imagePosition, setImagePosition] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
   const [lastPanPoint, setLastPanPoint] = useState({ x: 0, y: 0 });
-  
+
   const imageRef = useRef(null);
   const containerRef = useRef(null);
 
@@ -35,8 +35,17 @@ const Experience = () => {
       "/Credentials/Chegg2.png"
     ],
     coursera: [
-      "/Credentials/Coursera1.png",
-      "/Credentials/Coursera2.jpeg"
+      "/Credentials/Coursera1.png"
+    ],
+    goodEnoughEnergy: [
+      "/Credentials/GoodEnoughEnergy_Certificate.png",
+      "/Credentials/GoodEnoughEnergy_Certificate1.png"
+
+    ],
+    guvi: [
+      "/Credentials/GUVI_HCL_Data_Science_Certificate1.png",
+      "/Credentials/GUVI_HCL_Data_Science_Certificate2.png"
+
     ]
   };
 
@@ -67,8 +76,41 @@ const Experience = () => {
       skills: ["Content Creation", "Educational Design", "Analytics", "Quality Assurance"],
       achievements: ["10% increase in course popularity", "Created 50+ learning modules"],
       icon: "🎓"
+    },
+
+    // ⭐ NEW EXPERIENCE 1 — From your Internship Certificate
+    {
+      id: "goodEnoughEnergy",
+      date: "Feb 2025 – Apr 2025",
+      title: "Machine Learning Intern – Good Enough Energy Pvt. Ltd.",
+      description:
+        "Completed a full-time internship focusing on ML applications, data processing, and analytics. Demonstrated responsibility, sincerity, and strong willingness to learn.",
+      skills: ["Machine Learning", "Python", "Data Analysis", "Model Training"],
+      achievements: [
+        "Successfully completed full-time ML internship",
+        "Recognized for responsibility & sincerity",
+        "Delivered ML tasks with high reliability"
+      ],
+      icon: "⚡"
+    },
+
+    // ⭐ NEW EXPERIENCE 2 — From your GUVI x HCL Data Science Certificate
+    {
+      id: "guvi",
+      date: "Completed July 2025",
+      title: "Data Science Trainee – GUVI x HCL",
+      description:
+        "Completed a certified Data Science program covering Python, ML, Statistics, Data Visualization, and applied analytics.",
+      skills: ["Python", "Machine Learning", "Data Science", "Data Visualization"],
+      achievements: [
+        "Completed Data Science certification",
+        "Hands-on training with real datasets",
+        "Strengthened core ML and statistics concepts"
+      ],
+      icon: "🧠"
     }
   ];
+
 
   // Reset zoom when image changes
   useEffect(() => {
@@ -79,16 +121,16 @@ const Experience = () => {
   useEffect(() => {
     const handleWheel = (e) => {
       if (!showCredentials || !containerRef.current) return;
-      
+
       if (containerRef.current.contains(e.target)) {
         e.preventDefault();
-        
+
         const delta = e.deltaY > 0 ? -ZOOM_STEP : ZOOM_STEP;
         const newZoom = Math.min(Math.max(zoomLevel + delta, MIN_ZOOM), MAX_ZOOM);
-        
+
         if (newZoom !== zoomLevel) {
           setZoomLevel(newZoom);
-          
+
           // Reset position if zooming out to 1x
           if (newZoom === MIN_ZOOM) {
             setImagePosition({ x: 0, y: 0 });
@@ -117,7 +159,7 @@ const Experience = () => {
   const handleZoomOut = () => {
     const newZoom = Math.max(zoomLevel - ZOOM_STEP, MIN_ZOOM);
     setZoomLevel(newZoom);
-    
+
     // Reset position if zooming out to 1x
     if (newZoom === MIN_ZOOM) {
       setImagePosition({ x: 0, y: 0 });
@@ -140,21 +182,21 @@ const Experience = () => {
     if (isDragging && zoomLevel > MIN_ZOOM) {
       const newX = e.clientX - dragStart.x;
       const newY = e.clientY - dragStart.y;
-      
+
       // Optional: Add boundaries to prevent dragging too far
       const container = containerRef.current;
       const image = imageRef.current;
-      
+
       if (container && image) {
         const containerRect = container.getBoundingClientRect();
         const imageRect = image.getBoundingClientRect();
-        
+
         const maxX = Math.max(0, (imageRect.width * zoomLevel - containerRect.width) / 2);
         const maxY = Math.max(0, (imageRect.height * zoomLevel - containerRect.height) / 2);
-        
+
         const boundedX = Math.min(Math.max(newX, -maxX), maxX);
         const boundedY = Math.min(Math.max(newY, -maxY), maxY);
-        
+
         setImagePosition({ x: boundedX, y: boundedY });
       }
     }
@@ -207,7 +249,7 @@ const Experience = () => {
 
   const handleNextImage = () => {
     if (currentExperience && credentials[currentExperience]) {
-      setCurrentImageIndex((prev) => 
+      setCurrentImageIndex((prev) =>
         prev < credentials[currentExperience].length - 1 ? prev + 1 : 0
       );
     }
@@ -215,7 +257,7 @@ const Experience = () => {
 
   const handlePrevImage = () => {
     if (currentExperience && credentials[currentExperience]) {
-      setCurrentImageIndex((prev) => 
+      setCurrentImageIndex((prev) =>
         prev > 0 ? prev - 1 : credentials[currentExperience].length - 1
       );
     }
@@ -259,8 +301,8 @@ const Experience = () => {
           <VerticalTimelineElement
             key={exp.id}
             date={exp.date}
-            iconStyle={{ 
-              background: hoveredCard === exp.id ? "#6366f1" : "#4b6cb7", 
+            iconStyle={{
+              background: hoveredCard === exp.id ? "#6366f1" : "#4b6cb7",
               color: "#fff",
               transform: hoveredCard === exp.id ? "scale(1.1)" : "scale(1)",
               transition: "all 0.3s ease"
@@ -277,9 +319,9 @@ const Experience = () => {
                 <h3>{exp.title}</h3>
                 <span className="experience-icon">{exp.icon}</span>
               </div>
-              
+
               <p className="experience-description">{exp.description}</p>
-              
+
               <div className="skills-section">
                 <h4>Key Skills:</h4>
                 <div className="skills-tags">
@@ -298,7 +340,7 @@ const Experience = () => {
                 </ul>
               </div>
 
-              <button 
+              <button
                 className="credentials-btn"
                 onClick={() => handleShowCredentials(exp.id)}
               >
@@ -320,10 +362,10 @@ const Experience = () => {
               </h3>
               <button className="close-btn" onClick={handleCloseModal}>×</button>
             </div>
-            
+
             <div className="image-viewer">
-              <div 
-                className="main-image-container" 
+              <div
+                className="main-image-container"
                 ref={containerRef}
                 onMouseMove={handleMouseMove}
                 onMouseUp={handleMouseUp}
@@ -336,7 +378,7 @@ const Experience = () => {
 
                 {/* Zoom Controls */}
                 <div className="zoom-controls">
-                  <button 
+                  <button
                     className="zoom-btn"
                     onClick={handleZoomIn}
                     disabled={zoomLevel >= MAX_ZOOM}
@@ -344,7 +386,7 @@ const Experience = () => {
                   >
                     +
                   </button>
-                  <button 
+                  <button
                     className="zoom-btn"
                     onClick={handleZoomOut}
                     disabled={zoomLevel <= MIN_ZOOM}
@@ -355,7 +397,7 @@ const Experience = () => {
                 </div>
 
                 {/* Reset Zoom Button */}
-                <button 
+                <button
                   className={`reset-zoom-btn ${zoomLevel > MIN_ZOOM ? 'visible' : ''}`}
                   onClick={resetZoom}
                   title="Reset Zoom"
@@ -363,9 +405,9 @@ const Experience = () => {
                   Reset
                 </button>
 
-                <img 
+                <img
                   ref={imageRef}
-                  src={credentials[currentExperience][currentImageIndex]} 
+                  src={credentials[currentExperience][currentImageIndex]}
                   alt={`Credential ${currentImageIndex + 1}`}
                   className={`main-credential-image ${zoomLevel > MIN_ZOOM ? 'zoomed' : ''}`}
                   style={getImageTransform()}
@@ -375,7 +417,7 @@ const Experience = () => {
                   onTouchEnd={handleTouchEnd}
                   draggable={false}
                 />
-                
+
                 {credentials[currentExperience].length > 1 && (
                   <>
                     <button className="nav-btn prev-btn" onClick={handlePrevImage}>

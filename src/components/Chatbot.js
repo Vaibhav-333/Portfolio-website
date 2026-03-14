@@ -6,8 +6,8 @@ import "./Chatbot.css";
 const Chatbot = ({ theme }) => {
   const [input, setInput] = useState("");
   const [chat, setChat] = useState([
-    { 
-      sender: "bot", 
+    {
+      sender: "bot",
       message: "Hi! I'm Vaibhav's AI assistant. Ask me anything about his background, skills, or projects! 🤖",
       timestamp: new Date().toISOString()
     }
@@ -50,18 +50,18 @@ const Chatbot = ({ theme }) => {
           setIsOpen(false);
         }
       }
-      
+
       // Ctrl/Cmd + Enter to send
       if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
         handleSend();
       }
-      
+
       // Ctrl/Cmd + R to restart conversation
       if ((e.ctrlKey || e.metaKey) && e.key === 'r') {
         e.preventDefault();
         handleRestartChat();
       }
-      
+
       // Ctrl/Cmd + S to save chat
       if ((e.ctrlKey || e.metaKey) && e.key === 's') {
         e.preventDefault();
@@ -86,7 +86,7 @@ const Chatbot = ({ theme }) => {
   const playNotificationSound = useCallback(() => {
     if (soundEnabled && audioRef.current) {
       audioRef.current.currentTime = 0;
-      audioRef.current.play().catch(() => {}); // Ignore errors
+      audioRef.current.play().catch(() => { }); // Ignore errors
     }
   }, [soundEnabled]);
 
@@ -96,7 +96,7 @@ const Chatbot = ({ theme }) => {
       setShowNotification(true);
       setUnreadCount(prev => prev + 1);
       playNotificationSound();
-      
+
       setTimeout(() => {
         setShowNotification(false);
       }, 4000);
@@ -110,15 +110,15 @@ const Chatbot = ({ theme }) => {
     const timestamp = new Date().toISOString();
     const newMessage = { sender: "user", message: userMessage, timestamp };
     const newChat = [...chat, newMessage];
-    
+
     setChat(newChat);
     setInput("");
     setIsTyping(true);
 
     try {
-      const response = await fetch("http://127.0.0.1:5000/chat", {
+      const response = await fetch("https://vaibhav-chatbot-backend.onrender.com/chat", {
         method: "POST",
-        headers: { 
+        headers: {
           "Content-Type": "application/json",
           "Access-Control-Allow-Origin": "*"
         },
@@ -130,13 +130,13 @@ const Chatbot = ({ theme }) => {
       }
 
       const data = await response.json();
-      
+
       // Simulate typing delay for better UX
       setTimeout(() => {
-        const botMessage = { 
-          sender: "bot", 
-          message: data.reply, 
-          timestamp: new Date().toISOString() 
+        const botMessage = {
+          sender: "bot",
+          message: data.reply,
+          timestamp: new Date().toISOString()
         };
         setChat([...newChat, botMessage]);
         setIsTyping(false);
@@ -145,8 +145,8 @@ const Chatbot = ({ theme }) => {
 
     } catch (error) {
       console.error('Error:', error);
-      const errorMessage = { 
-        sender: "bot", 
+      const errorMessage = {
+        sender: "bot",
         message: "Sorry, I'm having trouble connecting right now. Please try again later or contact Vaibhav directly!",
         timestamp: new Date().toISOString()
       };
@@ -184,7 +184,7 @@ const Chatbot = ({ theme }) => {
       message: "Hi! I'm Vaibhav's AI assistant. Ask me anything about his background, skills, or projects! 🤖",
       timestamp: new Date().toISOString()
     };
-    
+
     // Save current chat to history
     if (chat.length > 1) {
       setChatHistory(prev => [...prev, {
@@ -194,24 +194,24 @@ const Chatbot = ({ theme }) => {
         preview: chat[1]?.message.substring(0, 50) + "..." || "Chat session"
       }]);
     }
-    
+
     setChat([initialMessage]);
     setInput("");
     setIsTyping(false);
   };
 
   const handleSaveChat = () => {
-    const chatText = chat.map(msg => 
+    const chatText = chat.map(msg =>
       `${msg.sender.toUpperCase()}: ${msg.message}\n${new Date(msg.timestamp).toLocaleString()}\n\n`
     ).join('');
-    
+
     const blob = new Blob([
       `Vaibhav's AI Assistant - Chat Session\n`,
       `Generated on: ${new Date().toLocaleString()}\n`,
       `${'-'.repeat(50)}\n\n`,
       chatText
     ], { type: 'text/plain' });
-    
+
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
@@ -233,22 +233,22 @@ const Chatbot = ({ theme }) => {
   };
 
   const formatTime = (timestamp) => {
-    return new Date(timestamp).toLocaleTimeString([], { 
-      hour: '2-digit', 
-      minute: '2-digit' 
+    return new Date(timestamp).toLocaleTimeString([], {
+      hour: '2-digit',
+      minute: '2-digit'
     });
   };
 
   const chatVariants = {
-    hidden: { 
-      opacity: 0, 
-      scale: 0.8, 
+    hidden: {
+      opacity: 0,
+      scale: 0.8,
       y: 50,
       transformOrigin: "bottom right"
     },
-    visible: { 
-      opacity: 1, 
-      scale: 1, 
+    visible: {
+      opacity: 1,
+      scale: 1,
       y: 0,
       transformOrigin: "bottom right"
     },
@@ -296,12 +296,12 @@ const Chatbot = ({ theme }) => {
         onClick={toggleChat}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
-        animate={{ 
-          boxShadow: isOpen 
-            ? "0 0 0 0 rgba(75, 108, 183, 0.4)" 
+        animate={{
+          boxShadow: isOpen
+            ? "0 0 0 0 rgba(75, 108, 183, 0.4)"
             : ["0 0 0 0 rgba(75, 108, 183, 0.4)", "0 0 0 20px rgba(75, 108, 183, 0)"]
         }}
-        transition={{ 
+        transition={{
           boxShadow: {
             duration: 2,
             repeat: isOpen ? 0 : Infinity,
@@ -315,9 +315,9 @@ const Chatbot = ({ theme }) => {
         >
           {isOpen ? "✕" : "💬"}
         </motion.div>
-        
+
         {unreadCount > 0 && (
-          <motion.div 
+          <motion.div
             className="unread-badge"
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
@@ -326,9 +326,9 @@ const Chatbot = ({ theme }) => {
             {unreadCount}
           </motion.div>
         )}
-        
+
         {!isOpen && (
-          <motion.div 
+          <motion.div
             className="chat-notification"
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
@@ -359,7 +359,7 @@ const Chatbot = ({ theme }) => {
                   <span className="status">Online</span>
                 </div>
               </div>
-              
+
               <div className="header-controls">
                 {/* Settings Button */}
                 <motion.button
@@ -371,7 +371,7 @@ const Chatbot = ({ theme }) => {
                 >
                   ⚙️
                 </motion.button>
-                
+
                 {/* Save Button */}
                 <motion.button
                   className="control-button"
@@ -382,7 +382,7 @@ const Chatbot = ({ theme }) => {
                 >
                   💾
                 </motion.button>
-                
+
                 {/* Restart Button */}
                 <motion.button
                   className="control-button"
@@ -393,7 +393,7 @@ const Chatbot = ({ theme }) => {
                 >
                   🔄
                 </motion.button>
-                
+
                 {/* Minimize Button */}
                 <motion.button
                   className="control-button"
@@ -404,7 +404,7 @@ const Chatbot = ({ theme }) => {
                 >
                   {isMinimized ? "🔲" : "➖"}
                 </motion.button>
-                
+
                 {/* Close Button */}
                 <motion.button
                   className="close-button"
@@ -438,7 +438,7 @@ const Chatbot = ({ theme }) => {
                           />
                           🔔 Sound notifications
                         </label>
-                        
+
                         <label>
                           <input
                             type="checkbox"
@@ -448,11 +448,11 @@ const Chatbot = ({ theme }) => {
                           📜 Auto-scroll messages
                         </label>
                       </div>
-                      
+
                       <div className="settings-group">
                         <label>Font size:</label>
-                        <select 
-                          value={fontSize} 
+                        <select
+                          value={fontSize}
                           onChange={(e) => setFontSize(e.target.value)}
                         >
                           <option value="small">Small</option>
@@ -494,7 +494,7 @@ const Chatbot = ({ theme }) => {
                             <div className="history-date">{item.date}</div>
                             <div className="history-preview">{item.preview}</div>
                           </div>
-                          <button 
+                          <button
                             className="delete-history"
                             onClick={() => deleteChatHistory(item.id)}
                           >
@@ -583,7 +583,7 @@ const Chatbot = ({ theme }) => {
                       </svg>
                     </motion.button>
                   </div>
-                  
+
                   <div className="quick-questions">
                     {["Tell me about Vaibhav", "His projects?", "Skills?"].map((question, idx) => (
                       <motion.button
@@ -597,7 +597,7 @@ const Chatbot = ({ theme }) => {
                       </motion.button>
                     ))}
                   </div>
-                  
+
                   <div className="keyboard-shortcuts">
                     <small>💡 Tips: Enter to send • Esc to close • Ctrl+R to restart • Ctrl+S to save</small>
                   </div>

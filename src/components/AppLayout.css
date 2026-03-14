@@ -1,0 +1,405 @@
+/* AppLayout.css — shared across all pages */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ===================== ROOT ===================== */
+.app-layout {
+    display: flex;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #cbd5e1 100%);
+    color: #1e293b;
+}
+
+.app-layout.dark-theme {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    color: white;
+}
+
+/* ===================== GLOBAL BG IMAGE ===================== */
+/*
+  The image sits on the RIGHT side of the page.
+  Overlay: transparent on the right (image visible) → opaque on the left (blends into bg).
+  This gives "high opacity at right, low opacity at left".
+*/
+.global-bg-image {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 55%;
+    /* covers right portion of every page */
+    height: 100vh;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.global-bg-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+}
+
+/* Gradient overlay: left edge is fully opaque (matches bg), right edge is transparent (image shows) */
+.global-bg-overlay {
+    position: absolute;
+    inset: 0;
+    /* Light theme: fade from page bg color on left → transparent on right */
+    background: linear-gradient(to right,
+            #f8fafc 0%,
+            /* fully opaque left edge */
+            rgba(248, 250, 252, 0.55) 40%,
+            /* semi-transparent mid */
+            rgba(248, 250, 252, 0.08) 100%
+            /* nearly transparent right edge */
+        );
+}
+
+.app-layout.dark-theme .global-bg-overlay {
+    background: linear-gradient(to right,
+            #1a1a2e 0%,
+            rgba(26, 26, 46, 0.55) 40%,
+            rgba(26, 26, 46, 0.08) 100%);
+}
+
+/* ===================== LEFT SIDEBAR ===================== */
+.left-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 220px;
+    height: 100vh;
+    background: rgba(15, 23, 42, 0.97);
+    backdrop-filter: blur(20px);
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem 1.5rem;
+    z-index: 100;
+    overflow-y: auto;
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.3);
+}
+
+/* Profile block */
+.sidebar-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 1.5rem;
+}
+
+.sidebar-profile-img-wrapper {
+    position: relative;
+    width: 90px;
+    height: 90px;
+}
+
+.sidebar-profile-glow {
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    right: -8px;
+    bottom: -8px;
+    background: linear-gradient(45deg, #667eea, #764ba2, #f093fb);
+    border-radius: 50%;
+    filter: blur(10px);
+    z-index: 0;
+}
+
+.sidebar-profile-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    position: relative;
+    z-index: 2;
+    border: 3px solid rgba(255, 255, 255, 0.2);
+}
+
+.sidebar-name {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #e2e8f0;
+    letter-spacing: 0.02em;
+    text-align: center;
+}
+
+.sidebar-status {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: rgba(34, 197, 94, 0.15);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    color: #4ade80;
+    font-weight: 500;
+}
+
+.status-dot {
+    width: 7px;
+    height: 7px;
+    background: #22c55e;
+    border-radius: 50%;
+    animation: sidebarPulse 2s infinite;
+}
+
+@keyframes sidebarPulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.4;
+    }
+}
+
+/* Divider */
+.sidebar-divider {
+    width: 100%;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+    margin-bottom: 1rem;
+}
+
+/* Nav links */
+.sidebar-nav {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    flex: 1;
+}
+
+.sidebar-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 0.7rem 1rem;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #94a3b8;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    position: relative;
+    cursor: pointer;
+}
+
+.sidebar-nav-link:hover,
+.sidebar-nav-link.active {
+    color: #e2e8f0;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.sidebar-nav-link.active {
+    background: rgba(124, 58, 237, 0.15);
+    color: #a78bfa;
+}
+
+.sidebar-nav-link::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 20%;
+    bottom: 20%;
+    width: 3px;
+    border-radius: 0 3px 3px 0;
+    background: #7c3aed;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.sidebar-nav-link:hover::before,
+.sidebar-nav-link.active::before {
+    opacity: 1;
+}
+
+.sidebar-nav-icon {
+    display: flex;
+    align-items: center;
+    color: #64748b;
+    transition: color 0.2s;
+}
+
+.sidebar-nav-link:hover .sidebar-nav-icon,
+.sidebar-nav-link.active .sidebar-nav-icon {
+    color: #a78bfa;
+}
+
+.sidebar-nav-label {
+    font-size: 0.92rem;
+}
+
+/* Theme toggle */
+.sidebar-theme-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 0.7rem 1rem;
+    border-radius: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #94a3b8;
+    font-size: 0.92rem;
+    font-weight: 500;
+    width: 100%;
+    transition: all 0.2s ease;
+    margin-top: 0.3rem;
+}
+
+.sidebar-theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: #e2e8f0;
+}
+
+/* Bottom socials */
+.sidebar-socials {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    width: 100%;
+    justify-content: center;
+}
+
+.sidebar-socials a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.07);
+    color: #94a3b8;
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.sidebar-socials a:hover {
+    background: rgba(124, 58, 237, 0.2);
+    color: #a78bfa;
+}
+
+.sidebar-copyright {
+    font-size: 0.7rem;
+    color: #475569;
+    text-align: center;
+    margin-top: 0.75rem;
+}
+
+/* ===================== PAGE CONTENT ===================== */
+.page-content {
+    margin-left: 220px;
+    flex: 1;
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+}
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 900px) {
+    .left-sidebar {
+        width: 70px;
+        padding: 1.5rem 0.5rem;
+    }
+
+    .sidebar-name,
+    .sidebar-nav-label,
+    .sidebar-status span,
+    .sidebar-copyright {
+        display: none;
+    }
+
+    .sidebar-profile-img-wrapper {
+        width: 50px;
+        height: 50px;
+    }
+
+    .sidebar-nav-link {
+        justify-content: center;
+        padding: 0.7rem;
+    }
+
+    .sidebar-theme-toggle {
+        justify-content: center;
+        padding: 0.7rem;
+    }
+
+    .sidebar-nav-icon {
+        color: #94a3b8;
+    }
+
+    .global-bg-image {
+        width: 65%;
+    }
+
+    .page-content {
+        margin-left: 70px;
+    }
+}
+
+@media (max-width: 600px) {
+    .left-sidebar {
+        position: fixed;
+        bottom: 0;
+        top: auto;
+        left: 0;
+        width: 100%;
+        height: 60px;
+        flex-direction: row;
+        padding: 0 1rem;
+        border-right: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        justify-content: space-around;
+        overflow: visible;
+    }
+
+    .sidebar-profile,
+    .sidebar-divider,
+    .sidebar-socials,
+    .sidebar-copyright,
+    .sidebar-theme-toggle {
+        display: none;
+    }
+
+    .sidebar-nav {
+        flex-direction: row;
+        gap: 0;
+        flex: unset;
+        width: auto;
+    }
+
+    .sidebar-nav-link {
+        flex-direction: column;
+        gap: 0.2rem;
+        padding: 0.5rem 0.75rem;
+    }
+
+    .sidebar-nav-label {
+        display: block;
+        font-size: 0.6rem;
+    }
+
+    .global-bg-image {
+        width: 100%;
+    }
+
+    .page-content {
+        margin-left: 0;
+        margin-bottom: 60px;
+    }
+}

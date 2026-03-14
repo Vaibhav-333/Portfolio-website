@@ -126,8 +126,8 @@ const Projects = () => {
   const filteredProjects = projectsData.filter(project => {
     const matchesCategory = activeFilter === 'All' || project.category === activeFilter;
     const matchesSearch = project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         project.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         project.technologies.some(tech => tech.toLowerCase().includes(searchTerm.toLowerCase()));
+      project.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      project.technologies.some(tech => tech.toLowerCase().includes(searchTerm.toLowerCase()));
     return matchesCategory && matchesSearch;
   });
 
@@ -151,7 +151,7 @@ const Projects = () => {
         <p className="projects-subtitle">
           Explore my portfolio of {projectsData.length} projects spanning Machine Learning, NLP, and Computer Vision
         </p>
-        
+
         <div className="projects-stats">
           <div className="stat-item">
             <span className="stat-number">{projectCount}</span>
@@ -205,28 +205,28 @@ const Projects = () => {
           </div>
         ) : (
           filteredProjects.map((project, index) => (
-            <div 
-              key={project.id} 
+            <div
+              key={project.id}
               className={`project ${project.featured ? 'featured' : ''}`}
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               {project.featured && <div className="featured-badge">⭐ Featured</div>}
-              
+
               <div className="project-header">
                 <h3>{project.title}</h3>
                 <span className="project-category">{project.category}</span>
               </div>
-              
+
               <p className="project-description">{project.description}</p>
-              
+
               <div className="project-technologies">
                 {project.technologies.map((tech, techIndex) => (
                   <span key={techIndex} className="tech-tag">{tech}</span>
                 ))}
               </div>
-              
+
               <div className="project-actions">
-                <button 
+                <button
                   className="demo-btn"
                   onClick={() => handleDemoClick(project.githubLink)}
                 >
