@@ -1036,6 +1036,142 @@ const Certifications = () => {
           .nav-btn-left  { left: 4px; }
           .nav-btn-right { right: 4px; }
         }
+
+        /* ============================================================
+   ADD THESE RULES inside the <style jsx> block in Certifications.jsx
+   Paste them just before the closing backtick of the style block
+   (after the existing @media (max-width: 600px) block)
+   ============================================================ */
+
+@media (max-width: 600px) {
+
+  /* ── Page shell ── */
+  .certifications-section {
+    padding: 2rem 1rem 0;
+    overflow-x: hidden;
+  }
+
+  /* ── Header title — stop it overflowing ── */
+  .header-content h2 {
+    font-size: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    word-break: break-word;
+    gap: 0.5rem;
+  }
+
+  .section-description {
+    font-size: 0.9rem;
+    padding: 0 0.5rem;
+  }
+
+  /* ── Stats grid — fit all 3 cards on screen ── */
+  .stats-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.6rem;
+    max-width: 100%;
+    padding: 0 0.25rem;
+  }
+
+  .stat-card {
+    padding: 0.85rem 0.4rem;
+    border-radius: 10px;
+  }
+
+  .stat-number {
+    font-size: 1.4rem;
+  }
+
+  .stat-label {
+    font-size: 0.6rem;
+    letter-spacing: 0;
+  }
+
+  /* ── Search + toggle ── */
+  .filters-section {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+    padding: 0 0.25rem;
+  }
+
+  .search-box {
+    max-width: 100%;
+  }
+
+  .search-input {
+    font-size: 0.9rem;
+    padding: 0.7rem 1.1rem;
+  }
+
+  .view-toggle {
+    justify-content: center;
+  }
+
+  .toggle-btn {
+    font-size: 0.82rem;
+    padding: 0.5rem 1rem;
+  }
+
+  /* ── Certificate gallery grid ── */
+  .cert-static-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 0 0.25rem;
+  }
+
+  /* ── Seminars section ── */
+  .seminars-section {
+    padding: 2.5rem 0 2.5rem;
+  }
+
+  .seminars-title {
+    font-size: 1.35rem;
+    flex-wrap: wrap;
+    text-align: center;
+    gap: 0.4rem;
+    padding: 0 0.5rem;
+  }
+
+  .seminars-static-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 0 0.25rem;
+  }
+
+  /* ── Modal ── */
+  .modal-overlay {
+    padding: 0.5rem;
+  }
+
+  .modal-container {
+    max-height: 96vh;
+    border-radius: 14px;
+  }
+
+  .modal-header {
+    padding: 1rem 1.1rem;
+  }
+
+  .modal-title h3 {
+    font-size: 1rem;
+  }
+
+  .modal-title p {
+    font-size: 0.8rem;
+  }
+
+  .modal-footer {
+    flex-direction: column;
+    gap: 0.6rem;
+    padding: 1rem;
+  }
+
+  .nav-btn-left  { left: 4px; }
+  .nav-btn-right { right: 4px; }
+}
+
       `}</style>
     </div>
   );

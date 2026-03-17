@@ -780,3 +780,49 @@
     opacity: 1;
   }
 }
+
+/* ============================================================
+   PASTE THIS AT THE VERY BOTTOM OF YOUR Chatbot.css
+   Moves the chatbot button above the mobile bottom nav bar
+   ============================================================ */
+
+@media (max-width: 600px) {
+
+  /* The floating chatbot toggle button */
+  .chatbot-toggle,
+  .chat-toggle-btn,
+  .chatbot-btn,
+  .chat-btn,
+  .chatbot-bubble-btn,
+  [class*="chatbot"][class*="btn"],
+  [class*="chatbot"][class*="toggle"],
+  [class*="chat"][class*="toggle"] {
+    bottom: 75px !important;
+    /* 60px nav bar + 15px breathing room */
+    right: 1rem !important;
+  }
+
+  /* The "Ask me anything!" speech bubble tooltip */
+  .chatbot-tooltip,
+  .chat-tooltip,
+  .chatbot-bubble,
+  .chat-bubble,
+  [class*="chatbot"][class*="tooltip"],
+  [class*="chat"][class*="bubble"],
+  [class*="chatbot"][class*="bubble"] {
+    bottom: 135px !important;
+    /* sits above the button */
+    right: 1rem !important;
+  }
+
+  /* If the chat window itself is also fixed/absolute */
+  .chatbot-window,
+  .chat-window,
+  .chatbot-container,
+  [class*="chatbot"][class*="window"],
+  [class*="chat"][class*="window"] {
+    bottom: 135px !important;
+    right: 0.75rem !important;
+    max-height: calc(100vh - 150px) !important;
+  }
+}
