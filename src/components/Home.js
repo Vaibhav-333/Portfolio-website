@@ -205,7 +205,7 @@ const Home = ({ theme }) => {
           <div className="ri-header">
             <div className="ri-header-left">
               <h1 className="ri-name">Vaibhav Awasthi</h1>
-              <p className="ri-degree">B.S. (Computer Science and Data Analysis)</p>
+              <p className="ri-degree">B.S. (Computer Science Engineering)</p>
               <p className="ri-institute">Indian Institute of Technology Patna</p>
             </div>
             <div className="ri-header-right">
@@ -243,7 +243,7 @@ const Home = ({ theme }) => {
                 </tr>
               </thead>
               <tbody>
-                <tr><td>B.S. (CSDA)</td><td>IIT PATNA</td><td>8.43 (Current)</td><td>2023–2027</td></tr>
+                <tr><td>B.S. (CSE)</td><td>IIT PATNA</td><td>8.43 (Current)</td><td>2023–2027</td></tr>
                 <tr><td>HSC (XII)</td><td>Shivaji Group of Institutions (SGOI)</td><td>80%</td><td>2022</td></tr>
                 <tr><td>SSC (X)</td><td>Shivaji Group of Institutions (SGOI)</td><td>87.8%</td><td>2020</td></tr>
               </tbody>
