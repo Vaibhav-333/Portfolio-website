@@ -20,7 +20,7 @@ const certifications = [
     rating: 4.9,
     type: "pw",
     images: ["/certificates/DS1.png", "/certificates/DS2.jpg"],
-    color: "#667eea"
+    color: "#1a56db"
   },
   {
     id: 2,
@@ -511,7 +511,7 @@ const Certifications = () => {
         .certifications-section {
           padding: 4rem 2rem 0;
           min-height: 100vh;
-          background: linear-gradient(135deg, var(--bg-color) 0%, rgba(75, 108, 183, 0.05) 100%);
+          background: linear-gradient(135deg, var(--bg-color) 0%, rgba(26, 86, 219, 0.05) 100%);
           position: relative;
           overflow: hidden;
         }
@@ -526,7 +526,7 @@ const Certifications = () => {
           bottom: 0;
           background:
             radial-gradient(circle at 20% 20%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
-            radial-gradient(circle at 80% 80%, rgba(75, 108, 183, 0.1) 0%, transparent 50%);
+            radial-gradient(circle at 80% 80%, rgba(26, 86, 219, 0.1) 0%, transparent 50%);
           pointer-events: none;
           z-index: 0;
         }
@@ -596,7 +596,7 @@ const Certifications = () => {
         .search-input {
           width: 100%;
           padding: 0.85rem 1.5rem;
-          border: 1.5px solid rgba(102,126,234,0.3);
+          border: 1.5px solid rgba(26,86,219,0.3);
           border-radius: 50px;
           background: var(--card-bg);
           color: var(--text-color);
@@ -605,11 +605,11 @@ const Certifications = () => {
           transition: all 0.3s;
           box-shadow: 0 4px 16px rgba(0,0,0,0.06);
         }
-        .search-input:focus { border-color: #667eea; box-shadow: 0 0 0 3px rgba(102,126,234,0.15); }
+        .search-input:focus { border-color: #1a56db; box-shadow: 0 0 0 3px rgba(26,86,219,0.15); }
         .view-toggle { display: flex; gap: 0.5rem; }
         .toggle-btn {
           padding: 0.6rem 1.2rem;
-          border: 1.5px solid rgba(102,126,234,0.3);
+          border: 1.5px solid rgba(26,86,219,0.3);
           border-radius: 50px;
           background: var(--card-bg);
           color: var(--text-color);
@@ -619,7 +619,7 @@ const Certifications = () => {
           transition: all 0.3s;
         }
         .toggle-btn.active, .toggle-btn:hover {
-          background: linear-gradient(135deg, #667eea, #764ba2);
+          background: linear-gradient(135deg, #1a56db, #0f2544);
           color: white;
           border-color: transparent;
         }
@@ -679,7 +679,7 @@ const Certifications = () => {
         .cert-static-placeholder-text {
           font-size: 0.9rem;
           font-weight: 600;
-          color: #667eea;
+          color: #1a56db;
           opacity: 0.75;
         }
 
@@ -714,7 +714,7 @@ const Certifications = () => {
           text-decoration: none;
         }
         .cert-action-btn:hover {
-          background: #667eea;
+          background: #1a56db;
           color: white;
           transform: scale(1.1);
         }
@@ -789,7 +789,7 @@ const Certifications = () => {
         .cert-date, .cert-rating { display: flex; align-items: center; gap: 0.35rem; color: #718096; font-size: 0.9rem; }
         .star-icon           { color: #ffd700; fill: #ffd700; }
         .cert-skills         { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.75rem; }
-        .skill-tag           { background: rgba(102,126,234,0.1); color: #667eea; padding: 0.2rem 0.65rem; border-radius: 10px; font-size: 0.78rem; font-weight: 500; border: 1px solid rgba(102,126,234,0.2); }
+        .skill-tag           { background: rgba(26,86,219,0.1); color: #1a56db; padding: 0.2rem 0.65rem; border-radius: 10px; font-size: 0.78rem; font-weight: 500; border: 1px solid rgba(26,86,219,0.2); }
         .cert-id             { color: #a0aec0; font-size: 0.75rem; font-family: monospace; margin-bottom: 0.5rem; }
         .cert-actions        { display: flex; gap: 0.75rem; padding: 0.75rem 1.5rem 1.5rem; }
         .license-btn, .download-btn {
@@ -799,8 +799,8 @@ const Certifications = () => {
         }
         .license-btn        { color: white; }
         .license-btn:hover  { opacity: 0.9; transform: translateY(-1px); }
-        .download-btn       { background: var(--card-bg); color: var(--text-color); border: 1.5px solid rgba(102,126,234,0.25); }
-        .download-btn:hover { background: rgba(102,126,234,0.08); transform: translateY(-1px); }
+        .download-btn       { background: var(--card-bg); color: var(--text-color); border: 1.5px solid rgba(26,86,219,0.25); }
+        .download-btn:hover { background: rgba(26,86,219,0.08); transform: translateY(-1px); }
 
         /* ── Modal ────────────────────────────────────────────────────────── */
         .modal-overlay {
@@ -819,7 +819,7 @@ const Certifications = () => {
         .modal-header {
           display: flex; justify-content: space-between; align-items: center;
           padding: 1.5rem 2rem;
-          background: linear-gradient(135deg, #667eea, #764ba2);
+          background: linear-gradient(135deg, #1a56db, #0f2544);
           color: white;
         }
         .modal-title { display: flex; align-items: center; gap: 1rem; }
@@ -843,9 +843,9 @@ const Certifications = () => {
           display: flex; align-items: center; justify-content: center;
         }
         .control-btn:hover { background: #f1f5f9; }
-        .reset-btn  { padding: 0.4rem 0.9rem; font-size: 0.85rem; font-weight: 600; color: #667eea; margin-left: auto; }
+        .reset-btn  { padding: 0.4rem 0.9rem; font-size: 0.85rem; font-weight: 600; color: #1a56db; margin-left: auto; }
         .zoom-level { font-weight: 600; color: #4a5568; min-width: 45px; text-align: center; font-size: 0.9rem; }
-        .image-counter { background: rgba(102,126,234,0.1); color: #667eea; padding: 0.3rem 0.8rem; border-radius: 20px; font-weight: 600; font-size: 0.85rem; }
+        .image-counter { background: rgba(26,86,219,0.1); color: #1a56db; padding: 0.3rem 0.8rem; border-radius: 20px; font-weight: 600; font-size: 0.85rem; }
         .certificate-viewer {
           flex: 1; overflow: auto; padding: 1.5rem;
           display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -881,7 +881,7 @@ const Certifications = () => {
         .nav-btn-right { right: -22px; }
         .image-dots { display: flex; justify-content: center; gap: 0.5rem; margin-top: 1rem; }
         .dot { width: 10px; height: 10px; border-radius: 50%; border: none; background: #cbd5e0; cursor: pointer; transition: all 0.3s; }
-        .dot.active { background: #667eea; transform: scale(1.25); }
+        .dot.active { background: #1a56db; transform: scale(1.25); }
         .modal-footer {
           display: flex; gap: 1rem; padding: 1.25rem 1.5rem;
           border-top: 1px solid #e2e8f0; background: #f8fafc;
@@ -892,9 +892,9 @@ const Certifications = () => {
           font-weight: 600; text-decoration: none; transition: all 0.3s;
           cursor: pointer; border: none; font-size: 0.875rem;
         }
-        .verify-btn         { background: white; color: #667eea; border: 1.5px solid #667eea; }
-        .verify-btn:hover   { background: #667eea; color: white; }
-        .download-btn-modal { background: #667eea; color: white; }
+        .verify-btn         { background: white; color: #1a56db; border: 1.5px solid #1a56db; }
+        .verify-btn:hover   { background: #1a56db; color: white; }
+        .download-btn-modal { background: #1a56db; color: white; }
         .download-btn-modal:hover { background: #5a6fd6; transform: translateY(-1px); }
 
         /* ═══════════════════════════════════════════════════════════════════
@@ -903,7 +903,7 @@ const Certifications = () => {
         .seminars-section {
           padding: 4rem 0 4rem;
           margin-top: 3rem;
-          border-top: 1px solid rgba(102,126,234,0.15);
+          border-top: 1px solid rgba(26,86,219,0.15);
           position: relative;
           z-index: 1;
         }
@@ -925,7 +925,7 @@ const Certifications = () => {
         .seminars-title-bar {
           width: 60px;
           height: 3px;
-          background: linear-gradient(90deg, #667eea, #764ba2);
+          background: linear-gradient(90deg, #1a56db, #0f2544);
           border-radius: 2px;
           margin: 0 auto;
         }

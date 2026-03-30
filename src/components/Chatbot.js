@@ -3,18 +3,62 @@ import React, { useState, useRef, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import "./Chatbot.css";
 
+// ── Markdown renderer — handles **bold**, *italic*, `code`, and line breaks ──
+const renderMarkdown = (text) => {
+  if (!text) return null;
+  // Split into lines to handle newlines
+  const lines = text.split('\n');
+  const elements = [];
+
+  lines.forEach((line, lineIdx) => {
+    // Parse inline: **bold**, *italic*, `code`
+    const parts = [];
+    const regex = /(\*\*(.+?)\*\*|\*(.+?)\*|`(.+?)`)/g;
+    let lastIndex = 0;
+    let match;
+
+    while ((match = regex.exec(line)) !== null) {
+      // Plain text before match
+      if (match.index > lastIndex) {
+        parts.push(line.slice(lastIndex, match.index));
+      }
+      if (match[0].startsWith('**')) {
+        parts.push(<strong key={`b-${lineIdx}-${match.index}`}>{match[2]}</strong>);
+      } else if (match[0].startsWith('*')) {
+        parts.push(<em key={`i-${lineIdx}-${match.index}`}>{match[3]}</em>);
+      } else if (match[0].startsWith('`')) {
+        parts.push(<code key={`c-${lineIdx}-${match.index}`} className="inline-code">{match[4]}</code>);
+      }
+      lastIndex = match.index + match[0].length;
+    }
+    // Remaining plain text
+    if (lastIndex < line.length) {
+      parts.push(line.slice(lastIndex));
+    }
+
+    elements.push(
+      <span key={`line-${lineIdx}`}>
+        {parts.length > 0 ? parts : line}
+        {lineIdx < lines.length - 1 && line !== '' && <br />}
+      </span>
+    );
+  });
+
+  return elements;
+};
+
 // ── AI Orb Avatar SVG ────────────────────────────────────────────────────────
 const AIOrb = () => (
   <svg width="38" height="38" viewBox="0 0 38 38" className="ai-orb-avatar" aria-hidden="true">
     <defs>
       <radialGradient id="coreGrad" cx="40%" cy="40%">
-        <stop offset="0%"   stopColor="#a5f3fc" />
-        <stop offset="50%"  stopColor="#6366f1" />
-        <stop offset="100%" stopColor="#4b6cb7" />
+        <stop offset="0%"   stopColor="#bfdbfe" />
+        <stop offset="50%"  stopColor="#1a56db" />
+        <stop offset="100%" stopColor="#0f2544" />
       </radialGradient>
       <linearGradient id="avatarGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%"   stopColor="#06b6d4" />
-        <stop offset="100%" stopColor="#7c3aed" />
+        <stop offset="0%"   stopColor="#0891b2" />
+        <stop offset="100%" stopColor="#1a56db" />
       </linearGradient>
     </defs>
     {/* Outer spinning ring */}
@@ -315,8 +359,8 @@ const Chatbot = ({ theme }) => {
         whileTap={{   scale: 0.9 }}
         animate={{
           boxShadow: isOpen
-            ? "0 0 0 0 rgba(124,58,237,0.4)"
-            : ["0 0 0 0 rgba(124,58,237,0.4)", "0 0 0 22px rgba(124,58,237,0)"],
+            ? "0 0 0 0 rgba(26,86,219,0.4)"
+            : ["0 0 0 0 rgba(26,86,219,0.4)", "0 0 0 22px rgba(26,86,219,0)"],
         }}
         transition={{ boxShadow: { duration: 2, repeat: isOpen ? 0 : Infinity, ease: "easeOut" } }}
       >
@@ -346,7 +390,7 @@ const Chatbot = ({ theme }) => {
             exit="hidden"
             transition={{ duration: 0.3, ease: "easeOut" }}
             style={{
-              boxShadow: "0 0 40px rgba(124,58,237,0.18), 0 20px 60px rgba(0,0,0,0.35)",
+              boxShadow: "0 0 40px rgba(26,86,219,0.18), 0 20px 60px rgba(0,0,0,0.35)",
             }}
           >
             {/* Header */}
@@ -449,7 +493,9 @@ const Chatbot = ({ theme }) => {
                         {entry.sender === "bot" && <div className="bot-dot" />}
                         <div className="message-content">
                           <div className="message-bubble">
-                            {entry.message}
+                            {entry.sender === 'bot'
+                              ? renderMarkdown(entry.message)
+                              : entry.message}
                             {entry.streaming && <span className="stream-cursor">|</span>}
                           </div>
                           <div className="message-time">{formatTime(entry.timestamp)}</div>
@@ -506,7 +552,7 @@ const Chatbot = ({ theme }) => {
                   <div className="quick-questions">
                     {quickQuestions.map((q, idx) => (
                       <motion.button key={idx} className="quick-question" onClick={() => setInput(q)}
-                        whileHover={{ scale: 1.04, boxShadow: "0 0 12px rgba(124,58,237,0.3)" }}
+                        whileHover={{ scale: 1.04, boxShadow: "0 0 12px rgba(26,86,219,0.3)" }}
                         whileTap={{ scale: 0.96 }}>
                         {q}
                       </motion.button>

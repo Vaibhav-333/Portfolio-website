@@ -302,7 +302,7 @@ const Experience = () => {
             key={exp.id}
             date={exp.date}
             iconStyle={{
-              background: hoveredCard === exp.id ? "#6366f1" : "#4b6cb7",
+              background: hoveredCard === exp.id ? "#0891b2" : "#1a56db",
               color: "#fff",
               transform: hoveredCard === exp.id ? "scale(1.1)" : "scale(1)",
               transition: "all 0.3s ease"

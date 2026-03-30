@@ -69,7 +69,7 @@
 }
 
 .gradient-text {
-  background: linear-gradient(45deg, #1e40af, #7c3aed, #0f766e);
+  background: linear-gradient(45deg, #1e40af, #1a56db, #0891b2);
   background-size: 300% 300%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -78,7 +78,7 @@
 }
 
 .home-wrapper.dark-theme .gradient-text {
-  background: linear-gradient(45deg, #667eea, #764ba2, #f093fb);
+  background: linear-gradient(45deg, #2563eb, #1a56db, #0891b2);
   background-size: 300% 300%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -193,7 +193,7 @@
 }
 
 .home-wrapper.dark-theme .preview-btn {
-  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  background: linear-gradient(135deg, #1a56db, #0891b2);
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
@@ -223,9 +223,9 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.875rem 1.5rem;
-  background: linear-gradient(135deg, #7c3aed, #a855f7);
+  background: linear-gradient(135deg, #1a56db, #0891b2);
   color: white;
-  border: 1px solid #7c3aed;
+  border: 1px solid #1a56db;
   border-radius: 12px;
   font-size: 1rem;
   font-weight: 600;
@@ -235,13 +235,13 @@
 }
 
 .connect-button:hover {
-  background: linear-gradient(135deg, #6d28d9, #9333ea);
+  background: linear-gradient(135deg, #1545b8, #0e7490);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(124, 58, 237, 0.3);
+  box-shadow: 0 6px 20px rgba(26, 86, 219, 0.3);
 }
 
 .home-wrapper.dark-theme .connect-button {
-  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  background: linear-gradient(135deg, #1a56db, #0891b2);
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
@@ -372,7 +372,7 @@
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, #1e40af, #7c3aed);
+  background: linear-gradient(90deg, #1e40af, #1a56db);
 }
 
 .education-card h3 {
@@ -925,13 +925,13 @@
 /* ── Divider ── */
 .ri-divider {
   height: 1.5px;
-  background: linear-gradient(90deg, #1e40af, #7c3aed, transparent);
+  background: linear-gradient(90deg, #1e40af, #1a56db, transparent);
   margin: 1.1rem 0;
   border-radius: 1px;
 }
 
 .home-wrapper.dark-theme .ri-divider {
-  background: linear-gradient(90deg, #3b82f6, #8b5cf6, transparent);
+  background: linear-gradient(90deg, #3b82f6, #1a56db, transparent);
 }
 
 /* ── Section headings ── */

@@ -117,8 +117,8 @@ const CrystalBackground = ({ theme }) => {
     const drawGlow = (cx, cy) => {
       // Outer purple halo
       const g1 = ctx.createRadialGradient(cx, cy, 0, cx, cy, 360);
-      g1.addColorStop(0,   "rgba(124,58,237,0.10)");
-      g1.addColorStop(0.5, "rgba(99,102,241,0.05)");
+      g1.addColorStop(0,   "rgba(26,86,219,0.10)");
+      g1.addColorStop(0.5, "rgba(26,86,219,0.05)");
       g1.addColorStop(1,   "rgba(0,0,0,0)");
       ctx.beginPath();
       ctx.arc(cx, cy, 360, 0, Math.PI * 2);
@@ -128,7 +128,7 @@ const CrystalBackground = ({ theme }) => {
       // Mid indigo-cyan glow
       const g2 = ctx.createRadialGradient(cx, cy, 0, cx, cy, 210);
       g2.addColorStop(0,   "rgba(6,182,212,0.18)");
-      g2.addColorStop(0.5, "rgba(99,102,241,0.10)");
+      g2.addColorStop(0.5, "rgba(26,86,219,0.10)");
       g2.addColorStop(1,   "rgba(0,0,0,0)");
       ctx.beginPath();
       ctx.arc(cx, cy, 210, 0, Math.PI * 2);
@@ -138,7 +138,7 @@ const CrystalBackground = ({ theme }) => {
       // Close cyan glow
       const g3 = ctx.createRadialGradient(cx, cy, 0, cx, cy, 130);
       g3.addColorStop(0,   "rgba(6,182,212,0.28)");
-      g3.addColorStop(0.7, "rgba(124,58,237,0.12)");
+      g3.addColorStop(0.7, "rgba(26,86,219,0.12)");
       g3.addColorStop(1,   "rgba(0,0,0,0)");
       ctx.beginPath();
       ctx.arc(cx, cy, 130, 0, Math.PI * 2);

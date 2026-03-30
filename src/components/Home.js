@@ -42,7 +42,7 @@ const Home = ({ theme }) => {
       draw() {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(100, 120, 180, ${this.opacity})`;
+        ctx.fillStyle = `rgba(26, 86, 219, ${this.opacity})`;
         ctx.fill();
       }
     }
@@ -57,7 +57,7 @@ const Home = ({ theme }) => {
           const d = Math.sqrt(dx * dx + dy * dy);
           if (d < 80) {
             ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(op.x, op.y);
-            ctx.strokeStyle = `rgba(100, 120, 180, ${0.05 * (1 - d / 80)})`; ctx.stroke();
+            ctx.strokeStyle = `rgba(26, 86, 219, ${0.05 * (1 - d / 80)})`; ctx.stroke();
           }
         });
       });
