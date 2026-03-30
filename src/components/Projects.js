@@ -1,5 +1,6 @@
 // src/components/Projects.js
 import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import "./Projects.css";
 
 const Projects = () => {
@@ -205,10 +206,14 @@ const Projects = () => {
           </div>
         ) : (
           filteredProjects.map((project, index) => (
-            <div
+            <motion.div
               key={project.id}
               className={`project ${project.featured ? 'featured' : ''}`}
-              style={{ animationDelay: `${index * 0.1}s` }}
+              initial={{ opacity: 0, y: 32 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.42, delay: index * 0.07, ease: "easeOut" }}
+              whileHover={{ y: -5, boxShadow: "0 16px 48px rgba(124,58,237,0.22)" }}
             >
               {project.featured && <div className="featured-badge">⭐ Featured</div>}
 
@@ -234,7 +239,7 @@ const Projects = () => {
                   Show Demo
                 </button>
               </div>
-            </div>
+            </motion.div>
           ))
         )}
       </div>

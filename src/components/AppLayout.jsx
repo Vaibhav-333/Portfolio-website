@@ -4,6 +4,7 @@ import profileImg from "../assets/photo_2023-12-30_13-16-19.jpg";
 import bgImg from "../assets/20250927_112409.jpg.jpeg";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Github, Linkedin, Mail, Home as HomeIcon, Briefcase, Award, User, FileText } from "lucide-react";
+import CrystalBackground from "./CrystalBackground";
 import "./AppLayout.css";
 
 const AppLayout = ({ children, theme, onThemeToggle }) => {
@@ -20,6 +21,9 @@ const AppLayout = ({ children, theme, onThemeToggle }) => {
 
     return (
         <div className={`app-layout ${theme}-theme`}>
+
+                {/* ── Crystal Orb Background ── */}
+            <CrystalBackground theme={theme} />
 
             {/* ── Global Background Image (all pages) ── */}
             <div className="global-bg-image">
@@ -65,14 +69,22 @@ const AppLayout = ({ children, theme, onThemeToggle }) => {
                                 initial={{ opacity: 0, x: -20 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ delay: 0.1 * i + 0.3 }}
-                                whileHover={{ x: 6 }}
+                                whileHover={{ x: 4 }}
                                 onClick={(e) => {
                                     e.preventDefault();
                                     navigate(link.href);
                                 }}
+                                style={{ position: "relative" }}
                             >
-                                <span className="sidebar-nav-icon">{link.icon}</span>
-                                <span className="sidebar-nav-label">{link.name}</span>
+                                {isActive && (
+                                    <motion.div
+                                        className="sidebar-active-pill"
+                                        layoutId="activePill"
+                                        transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                                    />
+                                )}
+                                <span className="sidebar-nav-icon" style={{ position: "relative", zIndex: 1 }}>{link.icon}</span>
+                                <span className="sidebar-nav-label" style={{ position: "relative", zIndex: 1 }}>{link.name}</span>
                             </motion.a>
                         );
                     })}
